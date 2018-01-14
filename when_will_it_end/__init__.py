@@ -4,7 +4,7 @@ import time
 
 round_2 = lambda x: round(x, -int(math.floor(math.log10(x))) + 1)
 
-def format_time(epoch_time, seconds_left):
+def format_time(epoch_time, seconds_left = 100):
     time_local = time.localtime(epoch_time)
     if seconds_left < 600:
         return time.strftime('%H:%M:%S', time_local)
