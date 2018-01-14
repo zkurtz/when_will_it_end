@@ -10,6 +10,12 @@ modulo some tolerance.
 
 Python 3 with the following modules: `datetime`, `time`
 
+## Setup
+
+- Clone this repository
+- `cd when_will_it_end`
+- `python setup.py install`
+
 ## Example
 
 ```python
