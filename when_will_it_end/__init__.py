@@ -16,19 +16,15 @@ def format_time(epoch_time, seconds_left = 100):
         return time.strftime('%m-%d %H', time_local)
 
 def format_time_difference(seconds):
-    m, s = divmod(seconds, 60)
-    h, m = divmod(m, 60)
-    s = round(s)
-    if seconds > 36000:
-        return str(h) + ' hours'
-    elif seconds > 3600:
-        return str(h + round(m/60, 2)) + ' hours'
-    elif seconds > 600:
-        return str(m) + ' minutes'
-    elif seconds > 60:
-        return str(m + round(s / 60, 2)) + ' minutes'
-    else:
+    h = round_2(seconds/3600)
+    m = round_2(seconds/60)
+    s = round_2(seconds)
+    if seconds < 60:
         return str(s) + ' seconds'
+    elif seconds < 3600:
+        return str(m) + ' minutes'
+    else:
+        return str(h) + ' hours'
 
 class LoopProgressMonitor(object):
     def __init__(self, n, tol = 0.1, patience_seconds = 5, verbose = True):
