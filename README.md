@@ -38,9 +38,9 @@ print('Actual ending time: ' + wwie.format_time(time.time()))
 Results:
 
 ```
-Starting time: 12:14:44
+Starting time: 18:04:42
 Starting first of 10 iterations ...
-Est. finish 12:15:01 after 9 iters at 1.7 sec/iter
-Est. finish 12:15:03 after 5 iters at 1.8 sec/iter
-Actual ending time: 12:15:03
+Est. total 18.0 seconds, finish 18:05:00 after 9 iters at 1.8 sec/iter
+Est. total 20.0 seconds, finish 18:05:02 after 6 iters at 2.0 sec/iter
+Actual ending time: 18:05:01
 ```
