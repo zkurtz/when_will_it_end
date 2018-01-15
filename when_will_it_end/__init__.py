@@ -15,6 +15,21 @@ def format_time(epoch_time, seconds_left = 100):
     else:
         return time.strftime('%m-%d %H', time_local)
 
+def format_time_difference(seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    s = round(s)
+    if seconds > 36000:
+        return str(h) + ' hours'
+    elif seconds > 3600:
+        return str(h + round(m/60, 2)) + ' hours'
+    elif seconds > 600:
+        return str(m) + ' minutes'
+    elif seconds > 60:
+        return str(m + round(s / 60, 2)) + ' minutes'
+    else:
+        return str(s) + ' seconds'
+
 class LoopProgressMonitor(object):
     def __init__(self, n, tol = 0.1, patience_seconds = 5, verbose = True):
         '''
@@ -24,15 +39,17 @@ class LoopProgressMonitor(object):
         self.k = 0
         self.tol = tol
         self.patience_seconds = patience_seconds
-        self.t0 = time.time()
         self.user_expected_seconds_left = 1e10
         self.last_update = -1e10
         self.verbose = verbose
+        self.t0 = time.time()
 
     def describe_time_left(self):
         end = time.time() + self.user_expected_seconds_left # - tol_seconds
+        total_str = format_time_difference(end - self.t0)
         str_seconds_per_iter =round_2(self.seconds_per_iteration)
-        print('Est. finish ' + format_time(end, self.user_expected_seconds_left) +
+        print('Est. total ' + total_str +
+              ', finish ' + format_time(end, self.user_expected_seconds_left) +
               ' after ' + str(self.n - self.k) +
               ' iters at ' + str(str_seconds_per_iter) +
               ' sec/iter')
