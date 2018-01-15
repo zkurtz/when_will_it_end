@@ -16,7 +16,7 @@ def format_time(epoch_time, seconds_left = 100):
         return time.strftime('%m-%d %H', time_local)
 
 class LoopProgressMonitor(object):
-    def __init__(self, n, tol = 0.1, patience_seconds = 5):
+    def __init__(self, n, tol = 0.1, patience_seconds = 5, verbose = True):
         '''
         :param n: The expected total number of steps in the loop
         '''
@@ -27,19 +27,19 @@ class LoopProgressMonitor(object):
         self.t0 = time.time()
         self.user_expected_seconds_left = 1e10
         self.last_update = -1e10
+        self.verbose = verbose
 
     def describe_time_left(self):
-        #tol_seconds = self.tol * self.user_expected_seconds_left
         end = time.time() + self.user_expected_seconds_left # - tol_seconds
-        #late_end = early_end + 2*tol_seconds
         str_seconds_per_iter =round_2(self.seconds_per_iteration)
         print('Est. finish ' + format_time(end, self.user_expected_seconds_left) +
-              #' and ' + format_time(late_end, self.user_expected_seconds_left) +
               ' after ' + str(self.n - self.k) +
               ' iters at ' + str(str_seconds_per_iter) +
               ' sec/iter')
 
     def __call__(self):
+        if not self.verbose:
+            return
         if self.k == 0:
             print('Starting first of ' + str(self.n) + ' iterations ...')
         else:

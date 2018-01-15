@@ -8,7 +8,7 @@ modulo some tolerance.
 
 ## Requirements
 
-Python 3 with the following modules: `datetime`, `time`
+Python 3 with the following modules: `math`, `time`
 
 ## Setup
 
