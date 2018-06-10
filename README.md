@@ -12,7 +12,9 @@ Python 3 with the following modules: `math`, `time`
 
 ## Setup
 
-- Clone this repository
+From pypi: `pip install when_will_it_end`
+
+Alternatively, clone the[source](https://github.com/zkurtz/when_will_it_end)and
 - `cd when_will_it_end`
 - `python setup.py install`
 
