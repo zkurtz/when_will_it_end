@@ -2,6 +2,8 @@
 import math
 import time
 
+name = 'when_will_it_end'
+
 round_2 = lambda x: round(x, -int(math.floor(math.log10(x))) + 1)
 
 def format_time(epoch_time, seconds_left = 100):
