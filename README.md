@@ -6,6 +6,11 @@ the loop will conclude based on the number of iterations remaining and the avera
 It prints a new predicted end time only when the most recent forecast falls too far from its internal estimate 
 modulo some tolerance.
 
+DISCLAIMER: [tqdm](https://github.com/tqdm/tqdm) is generally far superior to
+ `when_will_it_end`. One possible exception is that `when_will_it_end` plays pretty well 
+ with jupyter notebooks. The output is typically brief and consists of simple print statements. 
+ 
+
 ## Requirements
 
 Python 3 with the following modules: `math`, `time`
